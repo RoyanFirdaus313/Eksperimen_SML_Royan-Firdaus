@@ -54,8 +54,8 @@ def preprocess(df):
 
 if __name__ == "__main__":
     # Path input & output
-    input_path = "namadataset_raw/train_df.csv"
-    output_path = "preprocessing/namadataset_preprocessing/train_df_cleaned.csv"
+    input_path = "train_df_raw/train_df.csv"
+    output_path = "preprocessing/cleaned_df.csv"
 
     df = load_data(input_path)
     df_cleaned = preprocess(df)
