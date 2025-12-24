@@ -1,0 +1,33 @@
+name: Data Preprocessing Workflow
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install pandas scikit-learn
+
+      - name: Run Automation Script
+        run: |
+          # Pastikan path ini sesuai dengan lokasi file .py Anda di repositori
+          python preprocessing/automate_Royan-Firdaus.py
+
+      # Opsional: Menyimpan hasil agar terlihat di GitHub Actions
+      - name: Upload Preprocessed Data
+        uses: actions/upload-artifact@v3
+        with:
+          name: cleaned-dataset
+          path: preprocessing/namadataset_preprocessing/cleaned_df.csv
